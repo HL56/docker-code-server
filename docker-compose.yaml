@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  vscode:
+    container_name: 'vscode'
+    build:
+      context: .docker/vscode
+    restart: unless-stopped
+    ports:
+      - "${PORT}:8080"
+    volumes:
+      - "/opt:/home/coder/project"
+    environment:
+      PASSWORD: ${PASSWORD}
